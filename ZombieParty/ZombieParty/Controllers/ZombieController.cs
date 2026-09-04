@@ -20,7 +20,7 @@ namespace ZombieParty.Controllers
         //[HttpGet]
         public IActionResult Create()
         {
-            ViewBag.ZombieType = new SelectList(_baseDonnees.ZombieTypes.ToList(), "Id", "TypeName", null);
+            ViewBag.ZombieTypes = new SelectList(_baseDonnees.ZombieTypes.ToList(), "Id", "TypeName", null);
             return View();
         }
         [HttpPost]
