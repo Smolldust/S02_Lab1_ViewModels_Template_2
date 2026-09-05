@@ -1,0 +1,25 @@
+﻿@model ZombieParty.Models.ZombieType
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Type: NOM DU ZOMBIETYPE</h1>
+
+<div class="row">
+    @* @foreach () *@
+    <div href="#" class="card  border m-3 text-center bg-warning" style="width: 20rem; background-image: url('/images/imagesLayout/Fond.png'); ">
+        <div class="card-body  text-warning">
+            <h3 class="card-title"> NOM DU ZOMBIE </h3>
+            <h5> POINT </h5>
+        </div>
+    </div>
+
+
+</div>
+@* SI AUCUN ZOMBIE ASSOCIÉ*@
+<div class="alert alert-danger">No associated zombie for this type</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
