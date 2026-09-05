@@ -3,7 +3,7 @@ using ZombieParty.Models;
 
 namespace ZombieParty.Controllers
 {
-    
+
     public class ZombieTypeController : Controller
     {
         private BaseDonnees _baseDonnees { get; set; }
@@ -14,9 +14,9 @@ namespace ZombieParty.Controllers
 
         public IActionResult Index()
         {
-            this.ViewBag.MaListe = _baseDonnees.ZombieTypes.ToList();
+            List<ZombieType> zombieTypesList = _baseDonnees.ZombieTypes.ToList();
 
-            return View();
+            return View(zombieTypesList);
         }
 
         //GET CREATE
@@ -38,6 +38,11 @@ namespace ZombieParty.Controllers
             }
 
             return this.View(zombieType);
+        }
+        [HttpGet]
+        public IActionResult Details()
+        {
+            return View();
         }
 
     }
