@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ZombieParty.Models;
-
+using ZombieParty.ViewModels;
 namespace ZombieParty.Controllers
 {
 
@@ -40,9 +40,17 @@ namespace ZombieParty.Controllers
             return this.View(zombieType);
         }
         [HttpGet]
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            ZombieTypeVM zombieTypeVM = new()
+            {
+                ZombieType = new(),
+                ZombiesList = _baseDonnees.Zombies.Where(z => z.ZombieTypeId == id).ToList()
+            };
+
+            zombieTypeVM.ZombieType = _baseDonnees.ZombieTypes.FirstOrDefault(zt => zt.Id == id);
+            return View(zombieTypeVM);
+
         }
 
     }
