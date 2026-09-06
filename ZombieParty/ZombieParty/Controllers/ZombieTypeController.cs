@@ -42,10 +42,15 @@ namespace ZombieParty.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
+            List<Zombie> ZombieCategorie = _baseDonnees.Zombies.Where(z => z.ZombieTypeId == id).ToList();
+
             ZombieTypeVM zombieTypeVM = new()
             {
-                ZombieType = new(),
-                ZombiesList = _baseDonnees.Zombies.Where(z => z.ZombieTypeId == id).ToList()
+                ZombieType = _baseDonnees.ZombieTypes.FirstOrDefault(zt => zt.Id == id),
+                ZombiesList = ZombieCategorie,
+                ZombiesCount = ZombieCategorie.Count(),
+                PointsAverage = ZombieCategorie.Any() ? ZombieCategorie.Average(p => p.Point) : 0
+
             };
 
             zombieTypeVM.ZombieType = _baseDonnees.ZombieTypes.FirstOrDefault(zt => zt.Id == id);
